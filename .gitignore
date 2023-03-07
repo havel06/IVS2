@@ -1,2 +1,1 @@
-src/*.jar
-src/**/*.class
+src/build/**
