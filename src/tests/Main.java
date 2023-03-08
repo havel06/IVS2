@@ -7,7 +7,7 @@ public class Main
 {
 	public static void main(String[] args)
 	{
-		Result result = JUnitCore.runClasses(MathTests.class);
+		Result result = JUnitCore.runClasses(new Class[]{MathTests.class, ParserTests.class});
 		
 		for (Failure failure : result.getFailures()) {
 		   System.out.println(failure.toString());
