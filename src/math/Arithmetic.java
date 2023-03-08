@@ -93,4 +93,29 @@ public class Arithmetic
     	} while ((t - squareroot) != 0);
     	return squareroot;
 	}
+
+	/*
+	 * vrací n-tou odmocninu čísla 'a'
+	 * k tomu využívá stávající funkci sqrt() pro druhou odmocninu
+	 */
+	public static double sqrt(double a, int b)
+	{
+		assert(a < 0);
+		assert(b < 2);
+		double result = a;
+		for (int i = 0; i < b; i++)
+		{
+			result = sqrt(result);
+		}
+		return result;
+	}
+	
+	/*
+	 * vrací negovanou hodnotu čísla 'a'
+	 */
+	public static double neg(double a)
+	{
+		double result = 0 - a;
+		return result;
+	}
 }

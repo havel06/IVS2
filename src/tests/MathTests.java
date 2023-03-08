@@ -74,8 +74,8 @@ public class MathTests
 	}
 	public void squarerootN()
 	{
-		assertThrows(Exception.class, () -> {Arithmetic.sqrt(-8, 4)});
-		assertThrows(Exception.class, () -> {Arithmetic.sqrt(8, -4)});		
+		assertThrows(Exception.class, () -> {Arithmetic.sqrt(-8, 4); });
+		assertThrows(Exception.class, () -> {Arithmetic.sqrt(8, -4); });		
 		assertEquals(10d, Arithmetic.sqrt(1000, 3), 0);
 		assertEquals(0d, Arithmetic.sqrt(0, 100), 0);		
 	}
