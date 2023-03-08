@@ -2,17 +2,32 @@ package calculator;
 
 import javafx.stage.Stage;
 import javafx.application.Application;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
+import javafx.stage.Window;
 
-public class GUI extends Application
-{
-	@Override
+public class GUI extends Application {
+    @Override
     public void start(Stage primaryStage) {
-        primaryStage.setTitle("Hello World!");
+        primaryStage.setTitle("CalQl8r");
+        try {
+            Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("calculator.fxml"));
+            Scene scene = new Scene(root, 300, 275);
+
+            primaryStage.setScene(scene);
+
+        } catch (Exception e) {
+            System.out.println(e);
+            e.printStackTrace();
+            // System.exit(1);
+        }
+
         primaryStage.show();
     }
 
-	public static void run(String[] args) {
-        launch(GUI.class, args);
+    public static void run(String[] args) {
+        launch();
     }
 }
-
