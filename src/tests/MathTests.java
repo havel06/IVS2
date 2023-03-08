@@ -65,10 +65,24 @@ public class MathTests
 		assertEquals(0d, Arithmetic.fac(0), 0);
 		assertThrows(Exception.class, () -> { Arithmetic.fac(-5); });
 	}
-	public void squareroot(){
+	public void squareroot2()
+	{
 		assertThrows(Exception.class, () -> { Arithmetic.sqrt(-8); });
 		assertEquals(0d, Arithmetic.sqrt(0), 0);
 		assertEquals(2d, Arithmetic.sqrt(4), 0);
 		assertEquals(8.306623862918075d, Arithmetic.sqrt(69), 0);
+	}
+	public void squarerootN()
+	{
+		assertThrows(Exception.class, () -> {Arithmetic.sqrt(-8, 4)});
+		assertThrows(Exception.class, () -> {Arithmetic.sqrt(8, -4)});		
+		assertEquals(10d, Arithmetic.sqrt(1000, 3), 0);
+		assertEquals(0d, Arithmetic.sqrt(0, 100), 0);		
+	}
+	public void negation()
+	{
+		assertEquals(0d, Arithmetic.neg(0), 0);
+		assertEquals(100d, Arithmetic.neg(-100), 0);
+		assertEquals(-100d, Arithmetic.neg(100), 0);
 	}
 }
