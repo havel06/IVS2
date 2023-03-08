@@ -20,7 +20,7 @@ math_classes = $(math_source:%.java=%.class)
 all: calculator
 
 calculator: $(source_files)
-	javac -d $(build_dir) --module-path vendor --add-modules=javafx.controls,javafx.fxml -Werror $(calculator_source) $(math_source)
+	javac -encoding utf8 -d $(build_dir) --module-path vendor --add-modules=javafx.controls,javafx.fxml -Werror $(calculator_source) $(math_source)
 	cd $(build_dir) && jar -c -f $(jar_name) -m ../calculator_manifest.txt --main-class $(main_class) .
 	cp vendor/javafx.base.jar build/javafx.base.jar
 	cp vendor/javafx.controls.jar build/javafx.controls.jar
@@ -32,7 +32,7 @@ calculator: $(source_files)
 	cp calculator.fxml build/calculator.fxml
 
 test: calculator
-	javac -d $(build_dir) -Werror -cp $(junit_lib) $(test_source) $(math_source)
+	javac -encoding utf8 -d $(build_dir) -Werror -cp $(junit_lib) $(test_source) $(math_source)
 	cd $(build_dir) && jar -c -f $(test_jar_name) -m ../test_manifest.txt --main-class $(test_main_class) .
 	cp $(junit_lib) build/junit.jar
 	cp $(hamcrest_lib) build/hamcrest.jar

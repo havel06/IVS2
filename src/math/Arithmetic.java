@@ -3,7 +3,7 @@ package math;
 public class Arithmetic
 {
 	/**
-	 * scitani cisel 'a' a 'b')
+	 * sčítání čísel 'a' a 'b')
 	 */
 	public static double add(double a, double b)
 	{
@@ -12,7 +12,7 @@ public class Arithmetic
 	}
 
 	/**
-	 * od cisla 'a' odecte cislo 'b'
+ 	 * od čísla 'a' odečte číslo 'b'
 	 */
 	public static double sub(double a, double b)
 	{
@@ -21,7 +21,7 @@ public class Arithmetic
 	}
 
 	/**
-	 * nasobi cislo 'a', cislem 'b'
+	 * násobí číslo 'a', číslem 'b'
 	 */
 	public static double mul(double a, double b)
 	{
@@ -30,7 +30,7 @@ public class Arithmetic
 	}
 
 	/**
-	 * deli cislo 'a', cislem 'b'
+	 * dělí číslo 'a', číslem 'b'
 	 */
 	public static double div(double a, double b)
 	{
@@ -40,7 +40,7 @@ public class Arithmetic
 	}
 
 	/**
-	 * druha mocnina cisla 'a'
+	 * vrací druhou mocninu čísla 'a'
 	 */
 	public static double pwr(double a)
 	{
@@ -49,11 +49,13 @@ public class Arithmetic
 	}
 
 	/**
-	 * 'n'-ta mocnina cisla 'a'
+	 * vrací 'n'-tou mocninu čísla 'a'
 	 */
 	public static double pwr(double a, int n)
 	{
-		double result = a;
+		assert(n < 0);
+
+		double result = 1;
 		for (int i = 0; i < n; i++)
 		{
 			result *= a;
@@ -62,7 +64,7 @@ public class Arithmetic
 	}
 
 	/**
-	 * faktorial cisla a
+	 * vrací faktoriál čísla 'a'
 	 */
 	public static double fak(int a){
 		double result = a;
@@ -74,7 +76,7 @@ public class Arithmetic
 	}
 
 	/**
-	 * druha odmocnina cisla 'a'
+	 * vrací druhou odmocninu čísla'a'
 	 */
 	public static double sqrt(double a){
 
