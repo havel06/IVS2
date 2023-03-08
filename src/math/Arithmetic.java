@@ -66,7 +66,10 @@ public class Arithmetic
 	/**
 	 * vrací faktoriál čísla 'a'
 	 */
-	public static double fak(int a){
+	public static double fac(int a)
+	{
+		assert(a < 0);
+
 		double result = a;
 		for (int i = a-1; i > 1; i++)
 		{
@@ -78,17 +81,16 @@ public class Arithmetic
 	/**
 	 * vrací druhou odmocninu čísla'a'
 	 */
-	public static double sqrt(double a){
+	public static double sqrt(double a)
+	{
+		assert(a < 0);
 
 		double t;
     	double squareroot = a / 2;
-  
     	do {
         	t = squareroot;
         	squareroot = (t + (a / t)) / 2;
     	} while ((t - squareroot) != 0);
-
     	return squareroot;
-	
 	}
 }

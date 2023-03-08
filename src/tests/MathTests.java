@@ -58,4 +58,17 @@ public class MathTests
 		assertEquals(0.125d, Arithmetic.pwr(0.5, 3), 0);
 		assertThrows(Exception.class, () -> { Arithmetic.pwr(4, -6); });
 	}
+	public void factorial()
+	{
+		assertEquals(720d, Arithmetic.fac(6), 0);
+		assertEquals(6d, Arithmetic.fac(3), 0);
+		assertEquals(0d, Arithmetic.fac(0), 0);
+		assertThrows(Exception.class, () -> { Arithmetic.fac(-5); });
+	}
+	public void squareroot(){
+		assertThrows(Exception.class, () -> { Arithmetic.sqrt(-8); });
+		assertEquals(0d, Arithmetic.sqrt(0), 0);
+		assertEquals(2d, Arithmetic.sqrt(4), 0);
+		assertEquals(8.306623862918075d, Arithmetic.sqrt(69), 0);
+	}
 }
