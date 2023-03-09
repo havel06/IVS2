@@ -45,6 +45,22 @@ public class Parser
 		return result;
 	}
 
+	private int operatorPrecedence(char operator)
+	{
+		switch (operator) {
+			case '^':
+				return 0;
+			case '*':
+			case '/':
+				return 1;
+			case '+':
+			case '-':
+				return 2;
+			default:
+				throw new ParserException("Neznámý operátor");
+		}
+	}
+
 	private double applyOperator(double lhs, double rhs, char operator)
 	{
 		switch (operator) {
@@ -80,9 +96,14 @@ public class Parser
 			numbers.add(parsePrimaryExpression());
 		}
 
-		//TODO - operator precedence
 		while (!operators.isEmpty()) {
 			int nextOperator = 0;
+
+			for (int i = 0; i < operators.size(); i++) {
+				if (operatorPrecedence(operators.get(i)) < operatorPrecedence(operators.get(nextOperator))) {
+					nextOperator = i;
+				}
+			}
 
 			numbers.set(nextOperator, applyOperator(numbers.get(nextOperator),
 						numbers.get(nextOperator + 1),
