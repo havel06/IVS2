@@ -14,13 +14,22 @@ test_jar_name = tests.jar
 
 calculator_classes = $(calculator_source:%.java=%.class)
 math_classes = $(math_source:%.java=%.class)
+class_files = $(calculator_classes) $(math_classes)
+
+calculator_classes_in_build = $(foreach class, $(calculator_classes), $(build_dir)/$(class))
+math_classes_in_build = $(foreach class, $(math_classes), $(build_dir)/$(class))
 
 .PHONY: all clean run test calculator
 
-all: calculator
+all: $(build_dir)/$(jar_name)
 
-calculator: $(source_files)
-	javac -encoding utf8 -d $(build_dir) --module-path vendor --add-modules=javafx.controls,javafx.fxml -Werror $(calculator_source) $(math_source)
+$(calculator_classes): %.class: %.java
+	javac -encoding utf8 -d $(build_dir) --module-path vendor --add-modules=javafx.controls,javafx.fxml -Werror $<
+
+$(math_classes): %.class: %.java
+	javac -encoding utf8 -d $(build_dir) --module-path vendor --add-modules=javafx.controls,javafx.fxml -Werror $<
+
+$(build_dir)/$(jar_name): $(calculator_classes_in_build) $(math_classes_in_build)
 	cd $(build_dir) && jar -c -f $(jar_name) -m ../calculator_manifest.txt --main-class $(main_class) .
 	cp vendor/javafx.base.jar build/javafx.base.jar
 	cp vendor/javafx.controls.jar build/javafx.controls.jar
@@ -31,16 +40,16 @@ calculator: $(source_files)
 	cp vendor/javafx.swing.jar build/javafx.swing.jar
 	cp calculator.fxml build/calculator.fxml
 
-test: calculator
-	javac -encoding utf8 -d $(build_dir) -Werror -cp $(junit_lib) $(test_source) $(math_source)
+test: $(math_classes_in_build)
+	javac -encoding utf8 -d $(build_dir) -Werror -cp $(junit_lib) $(test_source)
 	cd $(build_dir) && jar -c -f $(test_jar_name) -m ../test_manifest.txt --main-class $(test_main_class) .
 	cp $(junit_lib) build/junit.jar
 	cp $(hamcrest_lib) build/hamcrest.jar
 	cd $(build_dir) && java -jar $(test_jar_name)
 
 clean:
-	rm $(class_files)
-	rm $(jar_name)
+	cd $(build_dir) && rm $(class_files)
+	cd $(build_dir) && rm $(jar_name)
 
-run:
+run: $(build_dir)/$(jar_name)
 	cd $(build_dir) && java -jar $(jar_name)
