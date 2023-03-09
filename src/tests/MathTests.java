@@ -24,7 +24,7 @@ public class MathTests
 		assertEquals(15d, Arithmetic.sub(30, 15), 0);
 		assertEquals(-40d, Arithmetic.sub(60, 100), 0);
 		assertEquals(-69d, Arithmetic.sub(-60, 9), 0);
-		assertEquals(0.431d, Arithmetic.sub(1, 0.569), 0);
+		assertEquals(0.431d, Arithmetic.sub(1, 0.569), 0.0001);
 	}
 	@Test
 	public void multiplication()
