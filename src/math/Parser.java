@@ -82,7 +82,6 @@ public class Parser
 
 	private double parseExpression()
 	{
-		//TODO - braces ()
 		ArrayList<Double> numbers = new ArrayList<Double>();
 		ArrayList<Character> operators = new ArrayList<Character>();
 
@@ -117,8 +116,18 @@ public class Parser
 
 	private double parsePrimaryExpression()
 	{
-		//TODO - braces, negative number
-		return parseNumber();
+		//TODO - negation
+		double result = 0;
+		if (peekChar() == '(') {
+			consumeChar(); //consume opening brace
+			result = parseExpression();
+			consumeChar(); //consume closing brace
+		}
+		else {
+			result = parseNumber();
+		}
+
+		return result;
 	}
 
 	private double parseNumber()
