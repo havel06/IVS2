@@ -71,7 +71,7 @@ public class Arithmetic
 		assert(a < 0);
 
 		double result = a;
-		for (int i = a-1; i > 1; i++)
+		for (int i = a-1; i > 1; i--)
 		{
 			result *= i;
 		}
