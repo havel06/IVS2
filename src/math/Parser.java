@@ -6,11 +6,20 @@ public class Parser
 	private String m_expression;
 	private int m_position;
 
-	public double parse(String expression) throws Exception
+	public double parse(String expression) throws ParserException
 	{
 		m_expression = expression;
 		m_position = 0;
 		return parseExpression();
+	}
+
+	static private int ExpectWholeNumber(double num) throws ParserException
+	{
+		if (num % 1 == 0) {
+			return (int)num;
+		} else {
+			throw new ParserException("Očekáváno celé číslo");
+		}
 	}
 
 	private void skipWhitespace()
@@ -125,6 +134,11 @@ public class Parser
 		}
 		else {
 			result = parseNumber();
+		}
+
+		if (!endOfExpression() && peekChar() == '!') {
+			consumeChar(); //consume factorial symbol
+			result = Arithmetic.fac(ExpectWholeNumber(result));
 		}
 
 		return result;

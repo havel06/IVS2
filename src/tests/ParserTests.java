@@ -56,4 +56,15 @@ public class ParserTests
 			System.out.println(e);
 		}
 	}
+
+	@Test
+	public void factorial()
+	{
+		try {
+			assertEquals(parser.parse("(1 + 3)! + 1"), 25.0, 0.0);
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.out.println(e);
+		}
+	}
 }
