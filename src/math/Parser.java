@@ -1,4 +1,5 @@
 package math;
+import java.util.ArrayList;
 
 public class Parser
 {
@@ -9,7 +10,7 @@ public class Parser
 	{
 		m_expression = expression;
 		m_position = 0;
-		return parseSubExpression();
+		return parseExpression();
 	}
 
 	private void skipWhitespace()
@@ -31,31 +32,79 @@ public class Parser
 		return m_position >= m_expression.length();
 	}
 
-	private char peekChar() throws Exception
+	private char peekChar()
 	{
 		skipWhitespace();
 		return m_expression.charAt(m_position);
 	}
 
-	private char consumeChar() throws Exception
+	private char consumeChar()
 	{
 		char result = peekChar();
 		m_position += 1;
 		return result;
 	}
 
-	private double parseSubExpression() throws Exception
+	private double applyOperator(double lhs, double rhs, char operator)
 	{
-		//TODO	
+		switch (operator) {
+			case '+':
+				return Arithmetic.add(lhs, rhs);
+			case '-':
+				return Arithmetic.sub(lhs, rhs);
+			case '*':
+				return Arithmetic.mul(lhs, rhs);
+			case '/':
+				return Arithmetic.div(lhs, rhs);
+			//TODO
+			//case '^':
+			//	return Arithmetic.pwr(lhs, rhs);
+			default:
+				throw new ParserException("Neznámý operátor");
+		}
+	}
+
+	private double parseExpression()
+	{
+		//TODO - braces ()
+		ArrayList<Double> numbers = new ArrayList<Double>();
+		ArrayList<Character> operators = new ArrayList<Character>();
+
+		numbers.add(parsePrimaryExpression());
+
+		while (true) {
+			if (endOfExpression() || peekChar() == ')')
+				break;
+
+			operators.add(parseOperator());
+			numbers.add(parsePrimaryExpression());
+		}
+
+		//TODO - operator precedence
+		while (!operators.isEmpty()) {
+			int nextOperator = 0;
+
+			numbers.set(nextOperator, applyOperator(numbers.get(nextOperator),
+						numbers.get(nextOperator + 1),
+						operators.get(nextOperator)));
+
+			numbers.remove(nextOperator + 1);
+			operators.remove(nextOperator);
+		}
+		return numbers.get(0);
+	}
+
+	private double parsePrimaryExpression()
+	{
+		//TODO - braces, negative number
 		return parseNumber();
 	}
 
-	private double parseNumber() throws Exception
+	private double parseNumber()
 	{
+		//TODO - factorial
 		String buffer = new String();
-		buffer += consumeChar();
-		while (true)
-		{
+		while (true) {
 			if (endOfExpression())
 				break;
 
@@ -68,12 +117,12 @@ public class Parser
 			consumeChar();
 		}
 
+		//TODO - better exception message
 		return Double.parseDouble(buffer);
 	}
 
-	private char parseOperator() throws Exception
+	private char parseOperator()
 	{
-		//TODO
-		return ' ';
+		return consumeChar();
 	}
 }

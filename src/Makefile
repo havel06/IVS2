@@ -23,10 +23,10 @@ math_classes_in_build = $(foreach class, $(math_classes), $(build_dir)/$(class))
 
 all: $(build_dir)/$(jar_name)
 
-$(calculator_classes): %.class: %.java
+$(calculator_classes_in_build): $(build_dir)/%.class: %.java
 	javac -encoding utf8 -d $(build_dir) --module-path vendor --add-modules=javafx.controls,javafx.fxml -Werror $<
 
-$(math_classes): %.class: %.java
+$(math_classes_in_build): $(build_dir)/%.class: %.java
 	javac -encoding utf8 -d $(build_dir) --module-path vendor --add-modules=javafx.controls,javafx.fxml -Werror $<
 
 $(build_dir)/$(jar_name): $(calculator_classes_in_build) $(math_classes_in_build)
@@ -41,7 +41,7 @@ $(build_dir)/$(jar_name): $(calculator_classes_in_build) $(math_classes_in_build
 	cp calculator.fxml build/calculator.fxml
 
 test: $(math_classes_in_build)
-	javac -encoding utf8 -d $(build_dir) -Werror -cp $(junit_lib) $(test_source)
+	javac -encoding utf8 -d $(build_dir) -Werror -cp "$(junit_lib):build/" $(test_source)
 	cd $(build_dir) && jar -c -f $(test_jar_name) -m ../test_manifest.txt --main-class $(test_main_class) .
 	cp $(junit_lib) build/junit.jar
 	cp $(hamcrest_lib) build/hamcrest.jar
