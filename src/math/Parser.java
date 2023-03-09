@@ -125,8 +125,15 @@ public class Parser
 
 	private double parsePrimaryExpression()
 	{
-		//TODO - negation
+		//negated expression
+		if (peekChar() == '-') {
+			consumeChar();
+			return Arithmetic.neg(parsePrimaryExpression());
+		}
+
 		double result = 0;
+
+		//expression inside braces
 		if (peekChar() == '(') {
 			consumeChar(); //consume opening brace
 			result = parseExpression();
@@ -136,6 +143,7 @@ public class Parser
 			result = parseNumber();
 		}
 
+		//factorial suffix
 		if (!endOfExpression() && peekChar() == '!') {
 			consumeChar(); //consume factorial symbol
 			result = Arithmetic.fac(ExpectWholeNumber(result));
@@ -146,7 +154,6 @@ public class Parser
 
 	private double parseNumber()
 	{
-		//TODO - factorial
 		String buffer = new String();
 		while (true) {
 			if (endOfExpression())

@@ -67,4 +67,16 @@ public class ParserTests
 			System.out.println(e);
 		}
 	}
+
+	@Test
+	public void negation()
+	{
+		try {
+			assertEquals(parser.parse("-(1 + 3)"), -4.0, 0.0);
+			assertEquals(parser.parse("-(-2 - -1)"), 1.0, 0.0);
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.out.println(e);
+		}
+	}
 }
