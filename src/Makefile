@@ -19,7 +19,7 @@ class_files = $(calculator_classes) $(math_classes)
 calculator_classes_in_build = $(foreach class, $(calculator_classes), $(build_dir)/$(class))
 math_classes_in_build = $(foreach class, $(math_classes), $(build_dir)/$(class))
 
-.PHONY: all clean run test calculator
+.PHONY: all clean run test calculator doc
 
 all: $(build_dir)/$(jar_name)
 
@@ -53,3 +53,6 @@ clean:
 
 run: $(build_dir)/$(jar_name)
 	cd $(build_dir) && java -jar $(jar_name)
+
+doc:
+	doxygen
