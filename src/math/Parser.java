@@ -1,11 +1,15 @@
 package math;
 import java.util.ArrayList;
 
+/** Vyhodnocuje matematické výrazy, s ohledem na precedenci operátorů. */
 public class Parser
 {
 	private String m_expression;
 	private int m_position;
 
+	/** Vyhodnotí výraz vyjádřený řetězcem.
+	 * @param expression Výraz k vyhodnocení.
+	 */
 	public double parse(String expression) throws ParserException
 	{
 		m_expression = expression;
@@ -13,6 +17,9 @@ public class Parser
 		return parseExpression();
 	}
 
+	/** Pokud je argument celé číslo, vrátí hodnotu přetypovanou na int, jinak vyhodí výjimku.
+	 * @param num Vstupní hodnota.
+	 */
 	static private int ExpectWholeNumber(double num) throws ParserException
 	{
 		if (num % 1 == 0) {
@@ -22,6 +29,7 @@ public class Parser
 		}
 	}
 
+	/** Posune aktuální pozici čtení na první následující nebílý znak. */
 	private void skipWhitespace()
 	{
 		if (m_position >= m_expression.length()) {
@@ -35,18 +43,21 @@ public class Parser
 		}
 	}
 
+	/** Vrátí true, pokud výraz neobsahuje další nebílé znaky. */
 	private boolean endOfExpression()
 	{
 		skipWhitespace();
 		return m_position >= m_expression.length();
 	}
 
+	/** Vrátí následující nebílý znak, pozice čtení zůstane na tomto znaku. */
 	private char peekChar()
 	{
 		skipWhitespace();
 		return m_expression.charAt(m_position);
 	}
 
+	/** Vrátí následující nebílý znak, pozice čtení se přesune o jeden znak dál. */
 	private char consumeChar()
 	{
 		char result = peekChar();
@@ -54,6 +65,9 @@ public class Parser
 		return result;
 	}
 
+	/** Vrátí pořadí, ve kterém by měl být operátor vykonán. Menší hodnota značí dřívější vykonání.
+	 * @param operator Operátor k vyhodnocení
+	 */
 	private int operatorPrecedence(char operator)
 	{
 		switch (operator) {
@@ -70,6 +84,11 @@ public class Parser
 		}
 	}
 
+	/** Aplikuje binární operátor.
+	 * @param lhs Hodnota na levé straně operátoru.
+	 * @param rhs Hodnota na pravé straně operátoru.
+	 * @param operator Operátor k provedení.
+	 */
 	private double applyOperator(double lhs, double rhs, char operator)
 	{
 		switch (operator) {
@@ -89,6 +108,7 @@ public class Parser
 		}
 	}
 
+	/** Vyhodnotí výraz na čtecí pozici, zakončený koncem souboru nebo uzavírací závorkou. */
 	private double parseExpression()
 	{
 		ArrayList<Double> numbers = new ArrayList<Double>();
@@ -123,6 +143,7 @@ public class Parser
 		return numbers.get(0);
 	}
 
+	/** Vyhodnotí primární výraz, tj. výraz v závorkách nebo číslo. */
 	private double parsePrimaryExpression()
 	{
 		//negated expression
@@ -152,6 +173,7 @@ public class Parser
 		return result;
 	}
 
+	/** Vyhodnotí hodnotu čísla na čtecí pozici. */
 	private double parseNumber()
 	{
 		String buffer = new String();
@@ -172,6 +194,7 @@ public class Parser
 		return Double.parseDouble(buffer);
 	}
 
+	/** Vrátí operátor na aktuální čtecí pozici. */
 	private char parseOperator()
 	{
 		return consumeChar();
