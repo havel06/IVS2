@@ -7,7 +7,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="calculator.Controller">
    <children>
-      <Button fx:id="submit" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#submitPressed" text="Button" />
+      <Button fx:id="submit" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#submitPressed" text="submit" />
       <Label fx:id="output" layoutX="94.0" layoutY="18.0" text="Label" />
       <TextField fx:id="input" layoutX="14.0" layoutY="49.0" />
    </children>

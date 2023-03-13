@@ -11,6 +11,8 @@ import javafx.fxml.Initializable;
 import javax.swing.Action;
 import javafx.event.ActionEvent;
 
+import math.Parser;
+
 public class Controller implements Initializable {
 
     @FXML
@@ -20,13 +22,20 @@ public class Controller implements Initializable {
     @FXML
     private TextField input;
 
+    private Parser parser = new Parser();
+
     public void initialize(URL location, ResourceBundle resources) {
 
     }
 
     @FXML
     private void submitPressed(ActionEvent event) {
-        output.setText(input.getText());
+        try {
+            output.setText(Double.toString(parser.parse(input.getText())));
+        } catch (Exception e) {
+            output.setText(e.getMessage());
+        }
+
     }
 
 }
