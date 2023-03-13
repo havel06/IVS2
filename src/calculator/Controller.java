@@ -3,31 +3,30 @@ package calculator;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import java.net.URL;
 
 import java.util.ResourceBundle;
-
+import javafx.fxml.Initializable;
 import javax.swing.Action;
-
 import javafx.event.ActionEvent;
 
-public class Controller {
+public class Controller implements Initializable {
 
     @FXML
-    private Button testButton1;
-    private Label testLabel1;
-
-    public Controller() {
-    };
-
+    private Button submit;
     @FXML
-    private void initialize(URL location, ResourceBundle resources) {
+    private Label output;
+    @FXML
+    private TextField input;
+
+    public void initialize(URL location, ResourceBundle resources) {
 
     }
 
     @FXML
-    private void pressed(ActionEvent event) {
-        testLabel1.setText("asdg");
+    private void submitPressed(ActionEvent event) {
+        output.setText(input.getText());
     }
 
 }
