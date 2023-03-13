@@ -159,8 +159,7 @@ public class Parser
 			consumeChar(); //consume opening brace
 			result = parseExpression();
 			consumeChar(); //consume closing brace
-		}
-		else {
+		} else {
 			result = parseNumber();
 		}
 
@@ -191,7 +190,11 @@ public class Parser
 		}
 
 		//TODO - better exception message
-		return Double.parseDouble(buffer);
+		try {
+			return Double.parseDouble(buffer);
+		} catch (NumberFormatException e) {
+			throw new ParserException("Číslo je ve špatném formátu.");
+		}
 	}
 
 	/** Vrátí operátor na aktuální čtecí pozici. */
