@@ -57,14 +57,22 @@ public class Arithmetic
 	 */
 	public static double pwr(double a, int n)
 	{
-		assert(n < 0);
-
-		double result = 1;
-		for (int i = 0; i < n; i++)
+		if ( n < 0 )
 		{
-			result *= a;
+			double result;
+			result = div(1, pwr(a,n));
+			return result;
 		}
-		return result;
+		else
+		{
+			double result = 1;
+			for (int i = 0; i < n; i++)
+			{
+				result *= a;
+			}
+			return result;
+		}
+		
 	}
 
 	/*
