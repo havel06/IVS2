@@ -34,9 +34,13 @@ public class Arithmetic
 	 */
 	public static double div(double a, double b)
 	{
-		assert(b != 0);
-		double result = a / b;
-		return result;
+		if (b == 0){
+			throw new ArithmeticException("division by zero");
+		}
+		else {
+			double result = a / b;
+			return result;
+		}
 	}
 
 	/**
