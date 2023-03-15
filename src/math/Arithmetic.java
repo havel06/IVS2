@@ -35,7 +35,7 @@ public class Arithmetic
 	public static double div(double a, double b)
 	{
 		if (b == 0){
-			throw new ArithmeticException("division by zero");
+			throw new ArithmeticException("tried to divide by zero");
 		}
 		else {
 			double result = a / b;
@@ -83,7 +83,18 @@ public class Arithmetic
 	 */
 	public static double fac(int a)
 	{
-		assert(a < 0);
+		if ( a > 0)
+		{
+			throw new ArithmeticException("tried to fac non natural number");
+		}
+		else if ( a == 0 )
+		{
+			return 0;
+		}
+		else if ( a == 1 )
+		{
+			return 1;
+		}
 
 		double result = a;
 		for (int i = a-1; i > 1; i--)
