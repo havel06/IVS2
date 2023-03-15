@@ -27,7 +27,7 @@ public class Arithmetic
 	public static double div(double a, double b)
 	{
 		if (b == 0){
-			throw new ArithmeticException("tried to divide by zero");
+			throw new ArithmeticException("Neplatné dělení nulou.");
 		}
 		else {
 			double result = a / b;
@@ -75,7 +75,7 @@ public class Arithmetic
 	{
 		if ( a < 0)
 		{
-			throw new ArithmeticException("tried to fac non natural number");
+			throw new ArithmeticException("Neplatný faktoriál nepřirozeného čísla.");
 		}
 		else if ( a == 0 )
 		{
@@ -98,7 +98,7 @@ public class Arithmetic
 	{
 		if ( a < 0 )
 		{
-			throw new ArithmeticException("tried to sqrt negative number");
+			throw new ArithmeticException("Neplatná odmocnina záporného čísla.");
 		}
 		double result = Math.sqrt(a);
     	return result;
@@ -109,11 +109,11 @@ public class Arithmetic
 	{
 		if ( a < 0 )
 		{
-			throw new ArithmeticException("tried to sqrt negative number");
+			throw new ArithmeticException("Neplatná odmocnina záporného čísla.");
 		}
 		if ( b < 2 )
 		{
-			throw new ArithmeticException("tried to sqrt with negative number");
+			throw new ArithmeticException("Neplatná odmocnina.");
 		}
 		double result = a;
 		for (int i = 0; i < b-1; i++)

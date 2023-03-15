@@ -100,9 +100,8 @@ public class Parser
 				return Arithmetic.mul(lhs, rhs);
 			case '/':
 				return Arithmetic.div(lhs, rhs);
-			//TODO
-			//case '^':
-			//	return Arithmetic.pwr(lhs, rhs);
+			case '^':
+				return Arithmetic.pwr(lhs, rhs);
 			default:
 				throw new ParserException("Neznámý operátor");
 		}
@@ -189,7 +188,6 @@ public class Parser
 			consumeChar();
 		}
 
-		//TODO - better exception message
 		try {
 			return Double.parseDouble(buffer);
 		} catch (NumberFormatException e) {
