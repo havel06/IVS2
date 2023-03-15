@@ -118,15 +118,12 @@ public class Arithmetic
 	 */
 	public static double sqrt(double a)
 	{
-		assert(a < 0);
-
-		double t;
-    	double squareroot = a / 2;
-    	do {
-        	t = squareroot;
-        	squareroot = (t + (a / t)) / 2;
-    	} while ((t - squareroot) != 0);
-    	return squareroot;
+		if ( a < 0 )
+		{
+			throw new ArithmeticException("tried to sqrt negative number");
+		}
+		double result = Math.sqrt(a);
+    	return result;
 	}
 
 	/*
@@ -135,10 +132,16 @@ public class Arithmetic
 	 */
 	public static double sqrt(double a, int b)
 	{
-		assert(a < 0);
-		assert(b < 2);
+		if ( a < 0 )
+		{
+			throw new ArithmeticException("tried to sqrt negative number");
+		}
+		if ( b < 2 )
+		{
+			throw new ArithmeticException("tried to sqrt with negative number");
+		}
 		double result = a;
-		for (int i = 0; i < b; i++)
+		for (int i = 0; i < b-1; i++)
 		{
 			result = sqrt(result);
 		}

@@ -77,10 +77,10 @@ public class MathTests
 	@Test
 	public void squareroot2()
 	{
-		//assertThrows(Exception.class, () -> { Arithmetic.sqrt(-8); });
-		//assertEquals(0d, Arithmetic.sqrt(0), 0);
-		//assertEquals(2d, Arithmetic.sqrt(4), 0);
-		//assertEquals(8.306623862918075d, Arithmetic.sqrt(69), 0);
+		assertThrows(Exception.class, () -> { Arithmetic.sqrt(-8); });
+		assertEquals(0d, Arithmetic.sqrt(0), 0);
+		assertEquals(2d, Arithmetic.sqrt(4), 0);
+		assertEquals(8.306623862918075d, Arithmetic.sqrt(69), 0);
 	}
 	@Test
 	public void squarerootN()
