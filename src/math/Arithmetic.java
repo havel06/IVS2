@@ -67,6 +67,17 @@ public class Arithmetic
 		return result;
 	}
 
+	/*
+	 * vrací 'n'-tou mocninu čísla 'a'
+	 * pro čísla s dessetinnou čárkou
+	 */
+	public static double pwr(double a, double b)
+	{
+		double result = Math.pow(a,b);
+		return result;
+	}
+
+
 	/**
 	 * vrací faktoriál čísla 'a'
 	 */
