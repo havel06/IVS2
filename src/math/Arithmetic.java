@@ -60,7 +60,8 @@ public class Arithmetic
 		if ( n < 0 )
 		{
 			double result;
-			result = div(1, pwr(a,n));
+			double b = neg(n);
+			result = div(1, pwr(a,b));
 			return result;
 		}
 		else
@@ -91,7 +92,7 @@ public class Arithmetic
 	 */
 	public static double fac(int a)
 	{
-		if ( a > 0)
+		if ( a < 0)
 		{
 			throw new ArithmeticException("tried to fac non natural number");
 		}
