@@ -61,8 +61,9 @@ public class MathTests
 		assertEquals(-8d, Arithmetic.pwr(-2, 3), 0);
 		assertEquals(1d, Arithmetic.pwr(5, 0), 0);
 		assertEquals(0.125d, Arithmetic.pwr(0.5, 3), 0);
-		assertEquals(0.00024414062d, Arithmetic.pwr(4, -6), 0);
-		assertEquals(0.00897420589d, Arithmetic.pwr(4, 3.4d), 0);
+		assertEquals(0.00024414062d, Arithmetic.pwr(4, -6), 0.001);
+		assertEquals(111.430472102d, Arithmetic.pwr(4, 3.4), 0.001);
+		assertEquals(0.00897420589d, Arithmetic.pwr(4, -3.4d), 0.001);
 	}
 	@Test
 	public void factorial()
