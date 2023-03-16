@@ -12,6 +12,10 @@ test_source = $(wildcard tests/*.java)
 test_main_class = tests.Main
 test_jar_name = tests.jar
 
+profiling_source = profiling/Profiling.java
+profiling_jar_name = stddev.jar
+profiling_main_class = profiling.Profiling
+
 calculator_classes = $(calculator_source:%.java=%.class)
 math_classes = $(math_source:%.java=%.class)
 class_files = $(calculator_classes) $(math_classes)
@@ -19,9 +23,9 @@ class_files = $(calculator_classes) $(math_classes)
 calculator_classes_in_build = $(foreach class, $(calculator_classes), $(build_dir)/$(class))
 math_classes_in_build = $(foreach class, $(math_classes), $(build_dir)/$(class))
 
-.PHONY: all clean run test calculator doc
+.PHONY: all clean run test calculator doc profiling
 
-all: $(build_dir)/$(jar_name)
+all: $(build_dir)/$(jar_name) profiling
 
 $(calculator_classes_in_build): $(build_dir)/%.class: %.java
 	javac -encoding utf8 -d $(build_dir) --module-path vendor --add-modules=javafx.controls,javafx.fxml -Werror $<
@@ -30,7 +34,8 @@ $(math_classes_in_build): $(build_dir)/%.class: %.java
 	javac -encoding utf8 -d $(build_dir) --module-path vendor --add-modules=javafx.controls,javafx.fxml -Werror $<
 
 $(build_dir)/$(jar_name): $(calculator_classes_in_build) $(math_classes_in_build)
-	cd $(build_dir) && jar -c -f $(jar_name) -m ../calculator_manifest.txt --main-class $(main_class) .
+	cp calculator.fxml build/calculator.fxml
+	cd $(build_dir) && jar -c -f $(jar_name) -m ../calculator_manifest.txt --main-class $(main_class) calculator math calculator.fxml
 	cp vendor/javafx.base.jar build/javafx.base.jar
 	cp vendor/javafx.controls.jar build/javafx.controls.jar
 	cp vendor/javafx.graphics.jar build/javafx.graphics.jar
@@ -38,7 +43,6 @@ $(build_dir)/$(jar_name): $(calculator_classes_in_build) $(math_classes_in_build
 	cp vendor/javafx.fxml.jar build/javafx.fxml.jar
 	cp vendor/javafx.media.jar build/javafx.media.jar
 	cp vendor/javafx.swing.jar build/javafx.swing.jar
-	cp calculator.fxml build/calculator.fxml
 
 test: $(math_classes_in_build)
 	javac -encoding utf8 -d $(build_dir) -Werror -cp "$(junit_lib):build/" $(test_source)
@@ -47,9 +51,12 @@ test: $(math_classes_in_build)
 	cp $(hamcrest_lib) build/hamcrest.jar
 	cd $(build_dir) && java -jar $(test_jar_name)
 
+profiling: $(profiling_source)
+	javac -encoding utf8 -d $(build_dir) -Werror $(profiling_source)
+	cd $(build_dir) && jar -c -f $(profiling_jar_name) --main-class $(profiling_main_class) profiling
+
 clean:
-	cd $(build_dir) && rm $(class_files)
-	cd $(build_dir) && rm $(jar_name)
+	rm -r $(build_dir)
 
 run: $(build_dir)/$(jar_name)
 	cd $(build_dir) && java -jar $(jar_name)
