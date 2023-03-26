@@ -10,13 +10,13 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="306.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="calculator.Controller">
    <children>
-      <Button fx:id="submit" layoutX="14.0" layoutY="85.0" mnemonicParsing="false" onAction="#submitPressed" text="submit" />
       <Label fx:id="output" layoutX="14.0" layoutY="52.0" prefHeight="25.0" prefWidth="276.0" text="Label" />
       <TextField fx:id="input" layoutX="14.0" layoutY="14.0" prefHeight="25.0" prefWidth="276.0" />
       <GridPane layoutX="14.0" layoutY="118.0" prefHeight="266.0" prefWidth="276.0">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
         </columnConstraints>
         <rowConstraints>
@@ -37,15 +37,17 @@
             <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#keyboardPressed" prefHeight="25.0" prefWidth="46.0" text="1" GridPane.rowIndex="4" />
             <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#keyboardPressed" prefHeight="25.0" prefWidth="46.0" text="2" GridPane.columnIndex="1" GridPane.rowIndex="4" />
             <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#keyboardPressed" prefHeight="25.0" prefWidth="46.0" text="3" GridPane.columnIndex="2" GridPane.rowIndex="4" />
-            <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#keyboardPressed" prefHeight="25.0" prefWidth="46.0" text="." GridPane.columnIndex="1" GridPane.rowIndex="5" />
-            <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#keyboardPressed" prefHeight="25.0" prefWidth="46.0" text="sudo rm -fr /" GridPane.columnIndex="2" GridPane.rowIndex="5" />
+            <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#keyboardPressed" prefHeight="25.0" prefWidth="46.0" text="." GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="5" />
+            <Button fx:id="submit" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#submitPressed" prefHeight="25.0" prefWidth="46.0" text="enter" GridPane.columnIndex="3" GridPane.rowIndex="3" GridPane.rowSpan="2147483647" />
             <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#keyboardPressed" prefHeight="25.0" prefWidth="46.0" text="0" GridPane.rowIndex="5" />
-            <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#keyboardPressed" prefHeight="25.0" prefWidth="46.0" text="*" GridPane.rowIndex="1" />
-            <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#keyboardPressed" prefHeight="25.0" prefWidth="46.0" text="/" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#keyboardPressed" prefHeight="25.0" prefWidth="46.0" text=")" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-            <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#keyboardPressed" prefHeight="25.0" prefWidth="46.0" text="-" GridPane.columnIndex="1" />
-            <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#keyboardPressed" prefHeight="25.0" prefWidth="46.0" text="+" />
-            <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#keyboardPressed" prefHeight="25.0" prefWidth="46.0" text="(" GridPane.columnIndex="2" />
+            <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#keyboardPressed" prefHeight="25.0" prefWidth="46.0" text="*" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+            <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#keyboardPressed" prefHeight="25.0" prefWidth="46.0" text="/" GridPane.rowIndex="1" />
+            <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#keyboardPressed" prefHeight="25.0" prefWidth="46.0" text=")" GridPane.columnIndex="1" />
+            <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#keyboardPressed" prefHeight="25.0" prefWidth="46.0" text="-" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+            <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#keyboardPressed" prefHeight="25.0" prefWidth="46.0" text="+" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#backspacePressed" prefHeight="25.0" prefWidth="46.0" text="backspace" wrapText="true" GridPane.columnIndex="2" GridPane.columnSpan="2147483647" />
+            <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#keyboardPressed" prefHeight="25.0" prefWidth="46.0" text="(" />
+            <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#keyboardPressed" prefHeight="25.0" prefWidth="46.0" text="^" GridPane.columnIndex="3" GridPane.rowIndex="2" />
          </children>
       </GridPane>
    </children>

@@ -45,4 +45,15 @@ public class Controller implements Initializable {
         input.setText(input.getText() + button.getText());
     } 
 
+    @FXML
+    private void backspacePressed(ActionEvent event) {
+
+        String inputText = input.getText();
+
+        if (inputText.length() > 0) {
+            input.setText(inputText.substring(0, inputText.length() - 1));
+        }
+
+    }
+
 }
