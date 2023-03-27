@@ -21,4 +21,17 @@ class Profiling
 		//TODO
 		return 0;
 	}
+
+	public static double average(ArrayList<Integer> numbers)
+	{
+		int sum = 0;
+		int count = 0;
+		for (int num : numbers)
+		{
+			sum += num;
+			count ++;
+		}
+		double result = sum/count;
+		return result;
+	}
 }
