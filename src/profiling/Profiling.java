@@ -18,8 +18,20 @@ class Profiling
 
 	public static double calculate(ArrayList<Integer> numbers)
 	{
-		//TODO
-		return 0;
+		double result = 0;
+		int count = 0;
+		for (int num : numbers)
+		{
+			result += num*num;
+			count++;
+		}
+		double a = average(numbers);
+		a = a*a;
+		result -= count * a;
+		count--;
+		result = result / count; 
+		result = Math.sqrt(result);
+		return result;
 	}
 
 	public static double average(ArrayList<Integer> numbers)
