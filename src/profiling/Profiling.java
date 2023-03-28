@@ -16,6 +16,7 @@ class Profiling
 		System.out.println(calculate(numbers));
 	}
 
+	/* výpočet směrodatné odchylky */
 	public static double calculate(ArrayList<Integer> numbers)
 	{
 		double result = 0;
@@ -25,15 +26,19 @@ class Profiling
 			result += num*num;
 			count++;
 		}
-		double a = average(numbers);
-		a = a*a;
-		result -= count * a;
+		double avg = average(numbers);
+		avg = avg*avg;
+		result -= count * avg;
 		count--;
+		if ( count == 0 ){
+			throw new ArithmeticException("Neplatné dělení nulou.");
+		}
 		result = result / count; 
 		result = Math.sqrt(result);
 		return result;
 	}
 
+	/* výpočet aritmetického průměru */
 	public static double average(ArrayList<Integer> numbers)
 	{
 		int sum = 0;
