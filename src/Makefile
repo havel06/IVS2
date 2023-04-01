@@ -51,9 +51,9 @@ test: $(math_classes_in_build)
 	cp $(hamcrest_lib) build/hamcrest.jar
 	cd $(build_dir) && java -jar $(test_jar_name)
 
-profiling: $(profiling_source)
+profiling: $(profiling_source) $(math_classes_in_build)
 	javac -encoding utf8 -d $(build_dir) -Werror $(profiling_source)
-	cd $(build_dir) && jar -c -f $(profiling_jar_name) --main-class $(profiling_main_class) profiling
+	cd $(build_dir) && jar -c -f $(profiling_jar_name) --main-class $(profiling_main_class) profiling math
 
 clean:
 	rm -r $(build_dir)

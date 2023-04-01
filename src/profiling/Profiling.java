@@ -2,6 +2,7 @@ package profiling;
 
 import java.util.ArrayList;
 import java.util.Scanner;
+import math.Arithmetic;
 
 class Profiling
 {
@@ -21,34 +22,33 @@ class Profiling
 	{
 		double result = 0;
 		int count = 0;
-		for (int num : numbers)
+		while (count < numbers.size())
 		{
-			result += num*num;
+			result = Arithmetic.add(result, Arithmetic.pwr(numbers.get(count)));
 			count++;
 		}
 		double avg = average(numbers);
-		avg = avg*avg;
-		result -= count * avg;
+		avg = Arithmetic.mul(avg, avg);
+		result = Arithmetic.sub(result, Arithmetic.mul(count, avg));
 		count--;
 		if ( count == 0 ){
 			throw new ArithmeticException("Neplatné dělení nulou.");
 		}
-		result = result / count; 
-		result = Math.sqrt(result);
+		result = Arithmetic.div(result, count);
+		result = Arithmetic.sqrt(result);
 		return result;
 	}
 
 	/* výpočet aritmetického průměru */
 	public static double average(ArrayList<Integer> numbers)
 	{
-		int sum = 0;
+		double sum = 0;
 		int count = 0;
-		for (int num : numbers)
+		while (count < numbers.size())
 		{
-			sum += num;
-			count ++;
+			sum = Arithmetic.add(sum, numbers.get(count));
+			count++;
 		}
-		double result = sum/count;
-		return result;
+		return Arithmetic.div(sum, count);
 	}
 }
