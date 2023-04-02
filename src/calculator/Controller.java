@@ -45,7 +45,7 @@ public class Controller implements Initializable {
     }
 
     @FXML
-    private void keyboardPressed(ActionEvent event) {
+    private void virtualKeyboard(ActionEvent event) {
         Button button = (Button)event.getSource();
 
         input.setText(input.getText() + button.getText());
