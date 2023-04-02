@@ -39,10 +39,7 @@ $(build_dir)/$(jar_name): $(calculator_classes_in_build) $(math_classes_in_build
 	cp vendor/javafx.base.jar build/javafx.base.jar
 	cp vendor/javafx.controls.jar build/javafx.controls.jar
 	cp vendor/javafx.graphics.jar build/javafx.graphics.jar
-	cp vendor/javafx-swt.jar build/javafx-swt.jar
 	cp vendor/javafx.fxml.jar build/javafx.fxml.jar
-	cp vendor/javafx.media.jar build/javafx.media.jar
-	cp vendor/javafx.swing.jar build/javafx.swing.jar
 
 test: $(math_classes_in_build)
 	javac -encoding utf8 -d $(build_dir) -Werror -cp "$(junit_lib):build/" $(test_source)
