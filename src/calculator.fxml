@@ -8,11 +8,11 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="306.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="calculator.Controller">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="364.0" prefWidth="306.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="calculator.Controller">
    <children>
-      <Label fx:id="output" layoutX="14.0" layoutY="52.0" prefHeight="25.0" prefWidth="276.0" text="Label" />
+      <Label fx:id="output" layoutX="14.0" layoutY="50.0" prefHeight="25.0" prefWidth="276.0" />
       <TextField fx:id="input" layoutX="14.0" layoutY="14.0" prefHeight="25.0" prefWidth="276.0" />
-      <GridPane layoutX="14.0" layoutY="118.0" prefHeight="266.0" prefWidth="276.0">
+      <GridPane layoutX="14.0" layoutY="85.0" prefHeight="266.0" prefWidth="276.0">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />

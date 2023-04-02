@@ -14,7 +14,7 @@ public class GUI extends Application {
         primaryStage.setTitle("CalQl8r");
         try {
             Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("calculator.fxml"));
-            Scene scene = new Scene(root, 300, 275);
+            Scene scene = new Scene(root, 306, 400);
 
             primaryStage.setScene(scene);
 
