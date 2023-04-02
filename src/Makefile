@@ -4,8 +4,6 @@ jar_name = CalQl8r.jar
 main_class = calculator.Main
 build_dir = build
 
-javafx_lib = vendor/javafx.base.jar:vendor/javafx.controls.jar:vendor/javafx.graphics.jar:vendor/javafx-swt.jar:vendor/javafx.fxml.jar:vendor/javafx.media.jar:vendor/javafx.swing.jar
-
 junit_lib = vendor/junit-4.13.2.jar
 hamcrest_lib = vendor/hamcrest-2.2.jar
 test_source = $(wildcard tests/*.java)
@@ -23,9 +21,9 @@ class_files = $(calculator_classes) $(math_classes)
 calculator_classes_in_build = $(foreach class, $(calculator_classes), $(build_dir)/$(class))
 math_classes_in_build = $(foreach class, $(math_classes), $(build_dir)/$(class))
 
-.PHONY: all clean run test calculator doc profiling
+.PHONY: all clean run test calculator doc profile
 
-all: $(build_dir)/$(jar_name) profiling
+all: $(build_dir)/$(jar_name) profile
 
 $(calculator_classes_in_build): $(build_dir)/%.class: %.java
 	javac -encoding utf8 -d $(build_dir) --module-path vendor --add-modules=javafx.controls,javafx.fxml -Werror $<
@@ -34,8 +32,7 @@ $(math_classes_in_build): $(build_dir)/%.class: %.java
 	javac -encoding utf8 -d $(build_dir) --module-path vendor --add-modules=javafx.controls,javafx.fxml -Werror $<
 
 $(build_dir)/$(jar_name): $(calculator_classes_in_build) $(math_classes_in_build)
-	cp calculator.fxml build/calculator.fxml
-	cd $(build_dir) && jar -c -f $(jar_name) -m ../calculator_manifest.txt --main-class $(main_class) calculator math calculator.fxml
+	cd $(build_dir) && jar -c -f $(jar_name) -m ../calculator_manifest.txt --main-class $(main_class) calculator math ../calculator.fxml
 	cp vendor/javafx.base.jar build/javafx.base.jar
 	cp vendor/javafx.controls.jar build/javafx.controls.jar
 	cp vendor/javafx.graphics.jar build/javafx.graphics.jar
@@ -48,7 +45,7 @@ test: $(math_classes_in_build)
 	cp $(hamcrest_lib) build/hamcrest.jar
 	cd $(build_dir) && java -jar $(test_jar_name)
 
-profiling: $(profiling_source) $(math_classes_in_build)
+profile: $(profiling_source) $(math_classes_in_build)
 	javac -encoding utf8 -d $(build_dir) -Werror $(profiling_source)
 	cd $(build_dir) && jar -c -f $(profiling_jar_name) --main-class $(profiling_main_class) profiling math
 

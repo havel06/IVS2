@@ -1,1 +1,1 @@
-Class-Path: javafx.base.jar javafx.controls.jar javafx.graphics.jar javafx.fxml.jar javafx-swt.jar
+Class-Path: javafx.base.jar javafx.controls.jar javafx.graphics.jar javafx.fxml.jar
