@@ -87,7 +87,7 @@ public class MathTests
 	{
 		assertThrows(Exception.class, () -> {Arithmetic.sqrt(-8, 4); });
 		assertThrows(Exception.class, () -> {Arithmetic.sqrt(8, -4); });		
-		assertEquals(10d, Arithmetic.sqrt(10000, 3), 0);
+		assertEquals(10d, Arithmetic.sqrt(1000, 3), 0.0001);
 		assertEquals(0d, Arithmetic.sqrt(0, 100), 0);		
 	}
 	@Test

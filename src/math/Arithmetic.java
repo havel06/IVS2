@@ -115,12 +115,7 @@ public class Arithmetic
 		{
 			throw new ArithmeticException("Neplatná odmocnina.");
 		}
-		double result = a;
-		for (int i = 0; i < b-1; i++)
-		{
-			result = sqrt(result);
-
-		}
+		double result = pwr(a, 1.0/b);
 		return result;
 	}
 	
