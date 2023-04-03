@@ -21,15 +21,17 @@ class_files = $(calculator_classes) $(math_classes)
 calculator_classes_in_build = $(foreach class, $(calculator_classes), $(build_dir)/$(class))
 math_classes_in_build = $(foreach class, $(math_classes), $(build_dir)/$(class))
 
-.PHONY: all clean run test calculator doc profile
+.PHONY: all clean run test calculator doc profile pack
 
-all: $(build_dir)/$(jar_name) profile
+all: calculator profile
 
 $(calculator_classes_in_build): $(build_dir)/%.class: %.java
 	javac -encoding utf8 -d $(build_dir) --module-path vendor --add-modules=javafx.controls,javafx.fxml -Werror $<
 
 $(math_classes_in_build): $(build_dir)/%.class: %.java
 	javac -encoding utf8 -d $(build_dir) --module-path vendor --add-modules=javafx.controls,javafx.fxml -Werror $<
+
+calculator : $(build_dir)/$(jar_name)
 
 $(build_dir)/$(jar_name): $(calculator_classes_in_build) $(math_classes_in_build)
 	cd $(build_dir) && jar -c -f $(jar_name) -m ../calculator_manifest.txt --main-class $(main_class) calculator math ../calculator.fxml
@@ -50,10 +52,27 @@ profile: $(profiling_source) $(math_classes_in_build)
 	cd $(build_dir) && jar -c -f $(profiling_jar_name) --main-class $(profiling_main_class) profiling math
 
 clean:
-	rm -r $(build_dir)
+	rm -rf $(build_dir)
+	rm -rf doc
 
-run: $(build_dir)/$(jar_name)
+run: calculator
 	cd $(build_dir) && java -jar $(jar_name)
 
 doc:
 	doxygen
+
+pack: calculator profile doc
+	mkdir -p /tmp/calql8r/install
+	cp -r build /tmp/calql8r/install/build
+	cp install_calc.sh /tmp/calql8r/install/install_calc.sh
+	cp uninstall_calc.sh /tmp/calql8r/install/uninstall_calc.sh
+	cp run_calc.sh /tmp/calql8r/install/run_calc.sh
+	cp install_stddev.sh /tmp/calql8r/install/install_stddev.sh
+	cp uninstall_stddev.sh /tmp/calql8r/install/uninstall_stddev.sh
+	cp run_stddev.sh /tmp/calql8r/install/run_stddev.sh
+	cp -r doc /tmp/calql8r/doc
+	make clean
+	cp -rf ../ /tmp/calql8r/repo
+	cd /tmp/calql8r && zip -r archive.zip *
+	mv /tmp/calql8r/archive.zip xloginy.zip
+	rm -rf /tmp/calql8r

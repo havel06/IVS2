@@ -1,0 +1,19 @@
+12.3. - Prototyp parseru, základní funkce matematické knihovny, inicializace GUI
+19.3. - Parser, matematická knihovna, základní rozvržení GUI
+26.3. - Výpočet směrodatné odchylky, základ příručky
+2.4. - profiling, GUI, hlavní část příručky
+3.4. - 9.4. - finální úpravy, instaler
+9.4.-> - odevzdání, příprava na obhajobu
+
+Rozdělení práce:
+Tomáš Sitarčík - GUI, mockupy
+Jan Šemora - matematická knihovna, profiling (výpočty)
+Michal Havlíček - parser, profiling, instaler
+
+Komunikační kanály:
+Facebook Messenger - vzájemná komunikace na denní bázi
+Discord - hlasové hovory, sdílení souborů
+
+Zvolený systém pro správu verzí: Git
+Platforma: GitHub
+odkaz: https://www.github.com/havel06/IVS2
