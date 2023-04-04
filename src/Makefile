@@ -4,6 +4,12 @@ jar_name = CalQl8r.jar
 main_class = calculator.Main
 build_dir = build
 
+ifeq ($(CALCULATOR_DEBUG),1)
+javac_flags = -encoding utf8 -Werror -g
+else
+javac_flags = -encoding utf8 -Werror
+endif
+
 junit_lib = vendor/junit-4.13.2.jar
 hamcrest_lib = vendor/hamcrest-2.2.jar
 test_source = $(wildcard tests/*.java)
@@ -26,10 +32,10 @@ math_classes_in_build = $(foreach class, $(math_classes), $(build_dir)/$(class))
 all: calculator profile
 
 $(calculator_classes_in_build): $(build_dir)/%.class: %.java
-	javac -encoding utf8 -d $(build_dir) --module-path vendor --add-modules=javafx.controls,javafx.fxml -Werror $<
+	javac $(javac_flags) -d $(build_dir) --module-path vendor --add-modules=javafx.controls,javafx.fxml $<
 
 $(math_classes_in_build): $(build_dir)/%.class: %.java
-	javac -encoding utf8 -d $(build_dir) --module-path vendor --add-modules=javafx.controls,javafx.fxml -Werror $<
+	javac $(javac_flags) -d $(build_dir) --module-path vendor --add-modules=javafx.controls,javafx.fxml $<
 
 calculator : $(build_dir)/$(jar_name)
 
@@ -41,14 +47,14 @@ $(build_dir)/$(jar_name): $(calculator_classes_in_build) $(math_classes_in_build
 	cp vendor/javafx.fxml.jar build/javafx.fxml.jar
 
 test: $(math_classes_in_build) $(calculator_classes_in_build)
-	javac -encoding utf8 -d $(build_dir) -Werror -cp "$(junit_lib):build/" $(test_source)
+	javac $(javac_flags) -d $(build_dir) -cp "$(junit_lib):build/math:build/claculator" $(test_source)
 	cd $(build_dir) && jar -c -f $(test_jar_name) -m ../test_manifest.txt --main-class $(test_main_class) math tests calculator
 	cp $(junit_lib) build/junit.jar
 	cp $(hamcrest_lib) build/hamcrest.jar
 	cd $(build_dir) && java -jar $(test_jar_name)
 
 profile: $(profiling_source) $(math_classes_in_build)
-	javac -encoding utf8 -d $(build_dir) -Werror $(profiling_source)
+	javac $(javac_flags) -d $(build_dir) $(profiling_source)
 	cd $(build_dir) && jar -c -f $(profiling_jar_name) --main-class $(profiling_main_class) profiling math
 
 clean:
@@ -66,13 +72,12 @@ pack: calculator profile doc
 	cp -r build /tmp/calql8r/install/build
 	cp install_calc.sh /tmp/calql8r/install/install_calc.sh
 	cp uninstall_calc.sh /tmp/calql8r/install/uninstall_calc.sh
-	cp run_calc.sh /tmp/calql8r/install/run_calc.sh
 	cp install_stddev.sh /tmp/calql8r/install/install_stddev.sh
 	cp uninstall_stddev.sh /tmp/calql8r/install/uninstall_stddev.sh
-	cp run_stddev.sh /tmp/calql8r/install/run_stddev.sh
+	cp -r runners /tmp/calql8r/install/runners
 	cp -r doc /tmp/calql8r/doc
 	make clean
 	cp -rf ../ /tmp/calql8r/repo
 	cd /tmp/calql8r && zip -r archive.zip *
-	mv /tmp/calql8r/archive.zip xloginy.zip
+	mv /tmp/calql8r/archive.zip xhavli65_xsemor01_xsitar06.zip
 	rm -rf /tmp/calql8r

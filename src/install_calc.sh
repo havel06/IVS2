@@ -9,5 +9,5 @@ cp build/javafx.controls.jar ~/.local/share/CalQl8r/javafx.controls.jar
 cp build/javafx.fxml.jar ~/.local/share/CalQl8r/javafx.fxml.jar
 cp build/javafx.graphics.jar ~/.local/share/CalQl8r/javafx.graphics.jar
 
-cp run_calc.sh ~/.local/bin/CalQl8r
+cp runners/run_calc.sh ~/.local/bin/CalQl8r
 chmod +x ~/.local/bin/CalQl8r
