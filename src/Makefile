@@ -68,16 +68,36 @@ doc:
 	doxygen
 
 pack: calculator profile doc
-	mkdir -p /tmp/calql8r/install
-	cp -r build /tmp/calql8r/install/build
-	cp install_calc.sh /tmp/calql8r/install/install_calc.sh
-	cp uninstall_calc.sh /tmp/calql8r/install/uninstall_calc.sh
-	cp install_stddev.sh /tmp/calql8r/install/install_stddev.sh
-	cp uninstall_stddev.sh /tmp/calql8r/install/uninstall_stddev.sh
-	cp -r runners /tmp/calql8r/install/runners
+	#calculator TODO - license, dependencies
+	mkdir -p /tmp/calql8r/install/calql8r_1.0/usr/share/CalQl8r/
+	mkdir -p /tmp/calql8r/install/calql8r_1.0/usr/bin
+	mkdir -p /tmp/calql8r/install/calql8r_1.0/DEBIAN
+	cp build/CalQl8r.jar /tmp/calql8r/install/calql8r_1.0/usr/share/CalQl8r/CalQl8r.jar
+	cp build/javafx.base.jar /tmp/calql8r/install/calql8r_1.0/usr/share/CalQl8r/javafx.base.jar
+	cp build/javafx.controls.jar /tmp/calql8r/install/calql8r_1.0/usr/share/CalQl8r/javafx.controls.jar
+	cp build/javafx.fxml.jar /tmp/calql8r/install/calql8r_1.0/usr/share/CalQl8r/javafx.fxml.jar
+	cp build/javafx.graphics.jar /tmp/calql8r/install/calql8r_1.0/usr/share/CalQl8r/javafx.graphics.jar
+	cp runners/run_calc.sh /tmp/calql8r/install/calql8r_1.0/usr/bin/CalQl8r
+	chmod +x /tmp/calql8r/install/calql8r_1.0/usr/bin/CalQl8r
+	cp debian_control_calc /tmp/calql8r/install/calql8r_1.0/DEBIAN/control
+	cd /tmp/calql8r/install/ && dpkg-deb --build --root-owner-group calql8r_1.0
+	rm -rf /tmp/calql8r/install/calql8r_1.0
+	#stddev TODO - license, dependencies
+	mkdir -p /tmp/calql8r/install/stddev_1.0/usr/share/stddev/
+	mkdir -p /tmp/calql8r/install/stddev_1.0/usr/bin
+	mkdir -p /tmp/calql8r/install/stddev_1.0/DEBIAN
+	cp build/stddev.jar /tmp/calql8r/install/stddev_1.0/usr/share/stddev/stddev.jar
+	cp runners/run_stddev.sh /tmp/calql8r/install/stddev_1.0/usr/bin/stddev
+	chmod +x /tmp/calql8r/install/stddev_1.0/usr/bin/stddev
+	cp debian_control_stddev /tmp/calql8r/install/stddev_1.0/DEBIAN/control
+	cd /tmp/calql8r/install/ && dpkg-deb --build --root-owner-group stddev_1.0
+	rm -rf /tmp/calql8r/install/stddev_1.0
+	#doc
 	cp -r doc /tmp/calql8r/doc
+	#repo
 	make clean
 	cp -rf ../ /tmp/calql8r/repo
+	#archive
 	cd /tmp/calql8r && zip -r archive.zip *
 	mv /tmp/calql8r/archive.zip xhavli65_xsemor01_xsitar06.zip
 	rm -rf /tmp/calql8r

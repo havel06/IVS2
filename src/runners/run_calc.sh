@@ -1,3 +1,3 @@
 #!/bin/sh
 
-java -jar ~/.local/share/CalQl8r/CalQl8r.jar
+java -jar /usr/share/CalQl8r/CalQl8r.jar
