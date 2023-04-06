@@ -35,7 +35,7 @@ $(calculator_classes_in_build): $(build_dir)/%.class: %.java
 	javac $(javac_flags) -d $(build_dir) --module-path vendor --add-modules=javafx.controls,javafx.fxml $<
 
 $(math_classes_in_build): $(build_dir)/%.class: %.java
-	javac $(javac_flags) -d $(build_dir) --module-path vendor --add-modules=javafx.controls,javafx.fxml $<
+	javac $(javac_flags) -d $(build_dir) $<
 
 calculator : $(build_dir)/$(jar_name)
 
@@ -46,9 +46,9 @@ $(build_dir)/$(jar_name): $(calculator_classes_in_build) $(math_classes_in_build
 	cp vendor/javafx.graphics.jar build/javafx.graphics.jar
 	cp vendor/javafx.fxml.jar build/javafx.fxml.jar
 
-test: $(math_classes_in_build) $(calculator_classes_in_build)
-	javac $(javac_flags) -d $(build_dir) -cp "$(junit_lib):build/math:build/claculator" $(test_source)
-	cd $(build_dir) && jar -c -f $(test_jar_name) -m ../test_manifest.txt --main-class $(test_main_class) math tests calculator
+test: $(math_classes_in_build)
+	javac $(javac_flags) -d $(build_dir) --module-path vendor --add-modules=junit $(test_source)
+	cd $(build_dir) && jar -c -f $(test_jar_name) -m ../test_manifest.txt --main-class $(test_main_class) tests math
 	cp $(junit_lib) build/junit.jar
 	cp $(hamcrest_lib) build/hamcrest.jar
 	cd $(build_dir) && java -jar $(test_jar_name)

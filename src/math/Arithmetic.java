@@ -105,7 +105,7 @@ public class Arithmetic
 	}
 
 	/* vrací n-tou odmocninu čísla 'a' */
-	public static double sqrt(double a, int b)
+	public static double sqrt(double a, double b)
 	{
 		if ( a < 0 )
 		{

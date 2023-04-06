@@ -57,6 +57,18 @@ public class Parser
 		return m_expression.charAt(m_position);
 	}
 
+	/** Vrátí true, jestli následující nebílé znaky odpovídají řetězci */
+	private boolean peekStr(String a)
+	{
+		skipWhitespace();
+		for (int i = 0; i < a.length(); i++) {
+			if (m_expression.charAt(m_position + i) != a.charAt(i)) {
+				return false;
+			}
+		}
+		return true;
+	}
+
 	/** Vrátí následující nebílý znak, pozice čtení se přesune o jeden znak dál. */
 	private char consumeChar()
 	{
@@ -119,7 +131,7 @@ public class Parser
 		numbers.add(parsePrimaryExpression());
 
 		while (true) {
-			if (endOfExpression() || peekChar() == ')')
+			if (endOfExpression() || peekChar() == ')' || peekChar() == ',')
 				break;
 
 			operators.add(parseOperator());
@@ -156,12 +168,29 @@ public class Parser
 
 		double result = 0;
 
-		//expression inside braces
-		if (peekChar() == '(') {
+		//root expression
+		if (peekStr("root")) {
+			m_position += 4; //skip word
+			if (consumeChar() != '(') {
+				throw new ParserException("Očekáván znak '('.");
+			}
+			double degree = parseExpression();
+			if (consumeChar() != ',') {
+				throw new ParserException("Očekáván znak ','.");
+			}
+			double operand = parseExpression();
+			if (consumeChar() != ')') {
+				throw new ParserException("Očekáván znak ','.");
+			}
+			result =  Arithmetic.sqrt(operand, degree);
+		}
+		else if (peekChar() == '(') {
+			//expression inside braces
 			consumeChar(); //consume opening brace
 			result = parseExpression();
 			consumeChar(); //consume closing brace
 		} else {
+			//normal number
 			result = parseNumber();
 		}
 
