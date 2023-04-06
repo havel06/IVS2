@@ -125,4 +125,10 @@ public class Arithmetic
 		double result = 0 - a;
 		return result;
 	}
+
+	public static double mod(double a, double b)
+	{
+		//TODO
+		return a;
+	}
 }

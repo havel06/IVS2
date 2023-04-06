@@ -75,6 +75,7 @@ public class Parser
 				return 0;
 			case '*':
 			case '/':
+			case '%':
 				return 1;
 			case '+':
 			case '-':
@@ -102,6 +103,8 @@ public class Parser
 				return Arithmetic.div(lhs, rhs);
 			case '^':
 				return Arithmetic.pwr(lhs, rhs);
+			case '%':
+				return Arithmetic.mod(lhs, rhs);
 			default:
 				throw new ParserException("Neznámý operátor");
 		}
