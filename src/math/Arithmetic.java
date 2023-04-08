@@ -104,7 +104,7 @@ public class Arithmetic
     	return result;
 	}
 
-	/* vrací n-tou odmocninu čísla 'a' */
+	/** vrací n-tou odmocninu čísla 'a' */
 	public static double sqrt(double a, double b)
 	{
 		if ( a < 0 )
@@ -119,16 +119,58 @@ public class Arithmetic
 		return result;
 	}
 	
-	/* vrací negovanou hodnotu čísla 'a' */
+	/** vrací negovanou hodnotu čísla 'a' */
 	public static double neg(double a)
 	{
 		double result = 0 - a;
 		return result;
 	}
 
+	/** vrací zbytek po dělení */
 	public static double mod(double a, double b)
 	{
-		//TODO
-		return a;
+		double mod;
+
+		if (b == 0)
+		{
+			throw new ArithmeticException("Neplatný zbytek po dělení nulou.");
+		}
+		else if (a == 0)
+		{
+			return 0.0;
+		}
+		else 
+		{
+			//ošetření negativních hodnot
+			if (a < 0)
+			{
+				mod = -a;
+			}
+			else
+			{
+				mod = a;
+			}
+
+			if (b < 0)
+			{
+				b = -b;
+			}
+
+			//hledání zbytku odečítáním
+			while (mod >= b)
+			{
+				mod = mod - b;
+			}
+
+			//'a' jako příznak pro otočení výsledku
+			if (a < 0)
+			{
+				return -mod;
+			}
+			else
+			{
+				return mod;
+			}
+		}
 	}
 }
