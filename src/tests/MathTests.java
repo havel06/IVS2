@@ -102,8 +102,8 @@ public class MathTests
 	@Test
 	public void modulo()
 	{
-		assertEquals(10d, Arithmetic.mod(10, 3), 0);
-		assertEquals(-5d, Arithmetic.mod(-5, 3), 0);
+		assertEquals(1d, Arithmetic.mod(10, 3), 0);
+		assertEquals(1d, Arithmetic.mod(-5, 3), 0);
 		assertEquals(-2d, Arithmetic.mod(-2, 3), 0);
 	}
 }
