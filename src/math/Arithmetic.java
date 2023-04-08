@@ -141,35 +141,23 @@ public class Arithmetic
 		}
 		else 
 		{
-			//ošetření negativních hodnot
 			if (a < 0)
 			{
-				mod = -a;
+				int c = -1;
+				while ( a > (b*c))
+				{
+					c--;
+				}
+				return (b*c - a);
 			}
 			else
 			{
-				mod = a;
-			}
-
-			if (b < 0)
-			{
-				b = -b;
-			}
-
-			//hledání zbytku odečítáním
-			while (mod >= b)
-			{
-				mod = mod - b;
-			}
-
-			//'a' jako příznak pro otočení výsledku
-			if (a < 0)
-			{
-				return -mod;
-			}
-			else
-			{
-				return mod;
+				int c = 1;
+				while ( a < (b*c))
+				{
+					c++;
+				}
+				return (b*c - a);
 			}
 		}
 	}
