@@ -144,7 +144,7 @@ public class Arithmetic
 			if (a < 0)
 			{
 				int c = -1;
-				while ( a > (b*c))
+				while ( a < (b*c))
 				{
 					c--;
 				}
@@ -153,7 +153,7 @@ public class Arithmetic
 			else
 			{
 				int c = 1;
-				while ( a < (b*c))
+				while ( a > (b*c))
 				{
 					c++;
 				}
