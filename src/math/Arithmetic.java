@@ -143,21 +143,17 @@ public class Arithmetic
 		{
 			if (a < 0)
 			{
-				int c = -1;
-				while ( a < (b*c))
-				{
-					c--;
-				}
-				return (b*c - a);
+				int k = (int)Math.round(a/b);
+				double result = a- k*b;
+				return result;
 			}
 			else
 			{
-				int c = 1;
-				while ( a > (b*c))
+				while (a > b)
 				{
-					c++;
+					a -= b;
 				}
-				return (b*c - a);
+				return a;
 			}
 		}
 	}
