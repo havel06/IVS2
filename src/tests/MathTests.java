@@ -3,6 +3,8 @@ package tests;
 import math.*;
 import static org.junit.Assert.*;
 
+import java.beans.Transient;
+
 import javax.accessibility.AccessibleAttributeSequence;
 
 import org.junit.Test;
@@ -96,5 +98,12 @@ public class MathTests
 		assertEquals(0d, Arithmetic.neg(0), 0);
 		assertEquals(100d, Arithmetic.neg(-100), 0);
 		assertEquals(-100d, Arithmetic.neg(100), 0);
+	}
+	@Test
+	public void modulo()
+	{
+		assertEquals(10d, Arithmetic.mod(10, 3), 0);
+		assertEquals(-5d, Arithmetic.mod(-5, 3), 0);
+		assertEquals(-2d, Arithmetic.mod(-2, 3), 0);
 	}
 }
