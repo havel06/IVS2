@@ -26,9 +26,15 @@ public class Controller implements Initializable {
     private TextField input;
 
     private Parser parser = new Parser();
+	private int last_caret_pos = 0;
 
     public void initialize(URL location, ResourceBundle resources) {
-
+		input.textProperty().addListener((observable, prev_val, new_val) -> {
+			last_caret_pos = input.getCaretPosition();
+		});
+		input.focusedProperty().addListener((observable, prev_val, new_val) -> {
+			last_caret_pos = input.getCaretPosition();
+		});
     }
 
     private void submit() {
@@ -47,16 +53,24 @@ public class Controller implements Initializable {
     @FXML
     private void virtualKeyboard(ActionEvent event) {
         Button button = (Button)event.getSource();
-
-        input.setText(input.getText() + button.getText());
-    } 
+		int insert_pos = last_caret_pos;
+		input.insertText(last_caret_pos, button.getText());
+		input.requestFocus();
+		input.positionCaret(insert_pos + 1);
+    }
 
     private void backspace() {
         String inputText = input.getText();
 
-        if (inputText.length() > 0) {
-            input.setText(inputText.substring(0, inputText.length() - 1));
-        }
+		if (inputText.length() == 0) {
+			return;
+		}
+		int delete_pos = last_caret_pos - 1;
+		StringBuilder builder = new StringBuilder(input.getText());
+		builder.deleteCharAt(delete_pos);
+		input.setText(builder.toString());
+		input.requestFocus();
+		input.positionCaret(delete_pos);
     }
 
     @FXML
