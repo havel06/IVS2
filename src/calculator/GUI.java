@@ -20,6 +20,7 @@ public class GUI extends Application {
 			primaryStage.setMaxHeight(400);
 			primaryStage.setMinWidth(306);
 			primaryStage.setMinHeight(400);
+			primaryStage.setResizable(false);
 
 			primaryStage.setScene(scene);
 
