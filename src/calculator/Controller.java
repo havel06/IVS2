@@ -54,9 +54,19 @@ public class Controller implements Initializable {
     private void virtualKeyboard(ActionEvent event) {
         Button button = (Button)event.getSource();
 		int insert_pos = last_caret_pos;
-		input.insertText(last_caret_pos, button.getText());
+        int caret_offset = 1;
+        String button_text;
+
+        if (button.getText().equals("√")) {
+            button_text = "root(,)";
+            caret_offset = 5;
+        } else {
+            button_text = button.getText();
+        }
+
+		input.insertText(last_caret_pos, button_text);
 		input.requestFocus();
-		input.positionCaret(insert_pos + 1);
+		input.positionCaret(insert_pos + caret_offset);
     }
 
     private void backspace() {
@@ -88,13 +98,5 @@ public class Controller implements Initializable {
         if (keyEvent.getCode() == KeyCode.ENTER) {
             submit();
         }
-
-        /* 
-        // nefunguje správně - mažou se dva znaky
-        if (keyEvent.getCode() == KeyCode.BACK_SPACE) {
-            backspace();
-        }
-        */
-        //keyEvent.consume();
     }
 }
