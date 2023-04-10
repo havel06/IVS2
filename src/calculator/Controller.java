@@ -37,6 +37,7 @@ public class Controller implements Initializable {
 		});
     }
 
+    /** předá text ze vstupního pole parseru, a jeho výstup vypíše do výstupního pole */
     private void submit() {
         try {
             output.setText(Double.toString(parser.parse(input.getText())));
@@ -46,11 +47,17 @@ public class Controller implements Initializable {
     }
 
     @FXML
+    /** Stisknutí tlačítka submit v GUI.
+     * @param event Událost stisknutí.
+     */
     private void submitPressed(ActionEvent event) {
         submit();
     }
 
     @FXML
+    /** Stistknutí jednoho z tlačítek (mimo submit, basckspace a clear) v GUI.
+     * @param event Událost stisknutí.
+     */
     private void virtualKeyboard(ActionEvent event) {
         Button button = (Button)event.getSource();
 		int insert_pos = last_caret_pos;
@@ -69,6 +76,7 @@ public class Controller implements Initializable {
 		input.positionCaret(insert_pos + caret_offset);
     }
 
+    /** Smaže poslední znak. */
     private void backspace() {
         String inputText = input.getText();
 
@@ -84,16 +92,25 @@ public class Controller implements Initializable {
     }
 
     @FXML
+    /** Stisknutí tlačítka backspace v GUI.
+     * @param event Událost stisknutí.
+     */
     private void backspacePressed(ActionEvent event) {
         backspace();
     }
 
     @FXML
+    /** Stisknutí tlačítka clear v GUI.
+     * @param event Událost stisknutí.
+     */
     private void clear(ActionEvent event) {
         input.setText("");
     }
 
     @FXML
+    /** Stisk tlačítka Enter uživatelem.
+     * @param event Událost stisknutí.
+     */
     private void onKeyPressed(KeyEvent keyEvent) {
         if (keyEvent.getCode() == KeyCode.ENTER) {
             submit();
