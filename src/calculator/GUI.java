@@ -13,11 +13,15 @@ public class GUI extends Application {
     public void start(Stage primaryStage) {
         primaryStage.setTitle("CalQl8r");
         try {
-            Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("calculator.fxml"));
-            Scene scene = new Scene(root, 306, 400);
+			Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("calculator.fxml"));
+			Scene scene = new Scene(root, 306, 400);
 
-            primaryStage.setResizable(false);
-            primaryStage.setScene(scene);
+			primaryStage.setMaxWidth(306);
+			primaryStage.setMaxHeight(400);
+			primaryStage.setMinWidth(306);
+			primaryStage.setMinHeight(400);
+
+			primaryStage.setScene(scene);
 
         } catch (Exception e) {
             System.out.println(e);
