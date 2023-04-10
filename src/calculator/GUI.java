@@ -16,6 +16,7 @@ public class GUI extends Application {
             Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("calculator.fxml"));
             Scene scene = new Scene(root, 306, 400);
 
+            primaryStage.setResizable(false);
             primaryStage.setScene(scene);
 
         } catch (Exception e) {
