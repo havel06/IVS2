@@ -54,7 +54,11 @@ public class Parser
 	private char peekChar()
 	{
 		skipWhitespace();
-		return m_expression.charAt(m_position);
+		if (endOfExpression()) {
+			return 0;
+		} else {
+			return m_expression.charAt(m_position);
+		}
 	}
 
 	/** Vrátí true, jestli následující nebílé znaky odpovídají řetězci */
@@ -160,6 +164,10 @@ public class Parser
 	/** Vyhodnotí primární výraz, tj. výraz v závorkách nebo číslo. */
 	private double parsePrimaryExpression()
 	{
+		if (endOfExpression()) {
+			return 0;
+		}
+
 		//negated expression
 		if (peekChar() == '-') {
 			consumeChar();
@@ -187,6 +195,9 @@ public class Parser
 		else if (peekChar() == '(') {
 			//expression inside braces
 			consumeChar(); //consume opening brace
+			if (peekChar() == ')') {
+				return 0; //empty braces
+			}
 			result = parseExpression();
 			consumeChar(); //consume closing brace
 		} else {
