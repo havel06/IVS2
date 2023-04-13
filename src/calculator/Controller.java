@@ -1,12 +1,17 @@
 package calculator;
 
+import java.nio.file.Files;
+import java.io.InputStream;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.control.TextArea;
 import java.net.URL;
 
 import java.util.ResourceBundle;
+import java.util.stream.Stream;
+
 import javafx.fxml.Initializable;
 import javax.swing.Action;
 import javafx.event.ActionEvent;
@@ -24,6 +29,8 @@ public class Controller implements Initializable {
     private Label output;
     @FXML
     private TextField input;
+    @FXML
+    private TextArea help_view;
 
     private Parser parser = new Parser();
 	private int last_caret_pos = 0;
@@ -115,5 +122,33 @@ public class Controller implements Initializable {
         if (keyEvent.getCode() == KeyCode.ENTER) {
             submit();
         }
+    }
+
+    /**
+     * Stisk tlačítka Nápověda uživatelem.
+     * 
+     * @param event Událost stisknutí.
+     */
+    @FXML
+    private void showHelp(ActionEvent event) {
+        help_view.setText("""
+                    enter - enter
+                    backspace - backspace
+                    clear - clear
+                    idk
+                    čísla smh bruh
+                """);
+
+        help_view.setDisable(false);
+    }
+
+    @FXML
+    /**
+     * Stisk tlačítka Zavřít uživatelem.
+     * 
+     * @param event Událost stisknutí.
+     */
+    private void hideHelp(ActionEvent event) {
+        help_view.setDisable(true);
     }
 }

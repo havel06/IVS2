@@ -39,7 +39,7 @@ $(math_classes_in_build): $(build_dir)/%.class: %.java
 
 calculator : $(build_dir)/$(jar_name)
 
-$(build_dir)/$(jar_name): $(calculator_classes_in_build) $(math_classes_in_build)
+$(build_dir)/$(jar_name): $(calculator_classes_in_build) $(math_classes_in_build) calculator.fxml
 	cd $(build_dir) && jar -c -f $(jar_name) -m ../calculator_manifest.txt --main-class $(main_class) calculator math ../calculator.fxml
 	cp vendor/javafx.base.jar build/javafx.base.jar
 	cp vendor/javafx.controls.jar build/javafx.controls.jar
