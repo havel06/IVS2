@@ -69,7 +69,7 @@
           </Menu>
         </menus>
       </MenuBar>
-      <TextArea fx:id="help_view" editable="false" layoutY="8.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="25.0">
+      <TextArea fx:id="help_view" disable="true" editable="false" layoutY="8.0" prefHeight="200.0" prefWidth="200.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="25.0">
          <font>
             <Font name="Monospaced Regular" size="12.0" />
          </font>
