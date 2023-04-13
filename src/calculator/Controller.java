@@ -142,7 +142,9 @@ public class Controller implements Initializable {
                 """);
 
         help_view.setDisable(false);
+        help_view.setVisible(true);
         close.setDisable(false);
+        close.setVisible(true);
 
     }
 
@@ -153,7 +155,10 @@ public class Controller implements Initializable {
      * @param event Událost stisknutí.
      */
     private void hideHelp(ActionEvent event) {
+
         help_view.setDisable(true);
+        help_view.setVisible(false);
         close.setDisable(true);
+        close.setVisible(false);
     }
 }
