@@ -74,6 +74,6 @@
             <Font name="Monospaced Regular" size="12.0" />
          </font>
       </TextArea>
-      <Button disable="true" layoutX="127.0" layoutY="359.0" mnemonicParsing="false" onAction="#hideHelp" text="Zavřít" />
+      <Button fx:id="close" disable="true" layoutX="127.0" layoutY="359.0" mnemonicParsing="false" onAction="#hideHelp" text="Zavřít" />
    </children>
 </AnchorPane>

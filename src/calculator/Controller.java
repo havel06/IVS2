@@ -31,6 +31,8 @@ public class Controller implements Initializable {
     private TextField input;
     @FXML
     private TextArea help_view;
+    @FXML
+    private Button close;
 
     private Parser parser = new Parser();
 	private int last_caret_pos = 0;
@@ -140,6 +142,8 @@ public class Controller implements Initializable {
                 """);
 
         help_view.setDisable(false);
+        close.setDisable(false);
+
     }
 
     @FXML
@@ -150,5 +154,6 @@ public class Controller implements Initializable {
      */
     private void hideHelp(ActionEvent event) {
         help_view.setDisable(true);
+        close.setDisable(true);
     }
 }
