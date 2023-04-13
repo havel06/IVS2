@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.canvas.Canvas?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.ImageInput?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onKeyPressed="#onKeyPressed" onKeyReleased="#onKeyPressed" prefHeight="424.0" prefWidth="306.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="calculator.Controller">
+   <children>
+      <MenuBar layoutY="2.0" prefHeight="25.0" prefWidth="306.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <menus>
+          <Menu mnemonicParsing="false" text="Menu">
+               <items>
+                  <MenuItem mnemonicParsing="false" text="Preference" />
+                  <MenuItem mnemonicParsing="false" onAction="#showHelp" text="Nápověda" />
+               </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+      <TextArea fx:id="help_view" disable="true" editable="false" layoutY="8.0" prefHeight="200.0" prefWidth="200.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="25.0">
+         <font>
+            <Font name="Monospaced Regular" size="12.0" />
+         </font>
+      </TextArea>
+      <Button fx:id="close" disable="true" layoutX="127.0" layoutY="359.0" mnemonicParsing="false" onAction="#hideHelp" text="Zavřít" visible="false" />
+      <TabPane layoutY="25.0" prefHeight="399.0" prefWidth="306.0" tabClosingPolicy="UNAVAILABLE">
+        <tabs>
+          <Tab text="Standard">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="475.0" prefWidth="306.0">
+                     <children>
+                        <TextField fx:id="input" layoutX="15.0" layoutY="14.0" prefHeight="25.0" prefWidth="276.0" />
+                        <Label fx:id="output" layoutX="15.0" layoutY="54.0" prefHeight="25.0" prefWidth="276.0" />
+                        <GridPane layoutX="15.0" layoutY="90.0" prefHeight="266.0" prefWidth="276.0">
+                          <columnConstraints>
+                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                          </columnConstraints>
+                          <rowConstraints>
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                          </rowConstraints>
+                           <children>
+                              <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#virtualKeyboard" prefHeight="25.0" prefWidth="46.0" text="7" GridPane.rowIndex="3" />
+                              <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#virtualKeyboard" prefHeight="25.0" prefWidth="46.0" text="8" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                              <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#virtualKeyboard" prefHeight="25.0" prefWidth="46.0" text="4" GridPane.rowIndex="4" />
+                              <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#virtualKeyboard" prefHeight="103.0" prefWidth="92.0" text="5" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                              <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#virtualKeyboard" prefHeight="90.0" prefWidth="51.0" text="9" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+                              <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#virtualKeyboard" prefHeight="25.0" prefWidth="46.0" text="6" GridPane.columnIndex="2" GridPane.rowIndex="4" />
+                              <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#virtualKeyboard" prefHeight="25.0" prefWidth="46.0" text="1" GridPane.rowIndex="5" />
+                              <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#virtualKeyboard" prefHeight="25.0" prefWidth="46.0" text="2" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                              <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#virtualKeyboard" prefHeight="25.0" prefWidth="46.0" text="3" GridPane.columnIndex="2" GridPane.rowIndex="5" />
+                              <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#virtualKeyboard" prefHeight="25.0" prefWidth="46.0" text="." GridPane.columnIndex="2" GridPane.rowIndex="6" />
+                              <Button fx:id="submit" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#submitPressed" prefHeight="25.0" prefWidth="46.0" text="enter" GridPane.columnIndex="3" GridPane.rowIndex="3" GridPane.rowSpan="2147483647" />
+                              <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#virtualKeyboard" prefHeight="25.0" prefWidth="46.0" text="0" GridPane.columnSpan="2" GridPane.rowIndex="6" />
+                              <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#virtualKeyboard" prefHeight="25.0" prefWidth="46.0" text="*" GridPane.rowIndex="2" />
+                              <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#virtualKeyboard" prefHeight="25.0" prefWidth="46.0" text="/" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                              <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#virtualKeyboard" prefHeight="25.0" prefWidth="46.0" text=")" GridPane.columnIndex="1" />
+                              <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#virtualKeyboard" prefHeight="25.0" prefWidth="46.0" text="-" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                              <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#virtualKeyboard" prefHeight="25.0" prefWidth="46.0" text="+" GridPane.rowIndex="1" />
+                              <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#backspacePressed" prefHeight="25.0" prefWidth="46.0" text="backspace" wrapText="true" GridPane.columnIndex="3" GridPane.columnSpan="2147483647" />
+                              <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#virtualKeyboard" prefHeight="25.0" prefWidth="46.0" text="(" />
+                              <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#virtualKeyboard" prefHeight="25.0" prefWidth="46.0" text="^" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+                              <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#clear" prefHeight="25.0" prefWidth="46.0" text="clear" GridPane.columnIndex="2" />
+                              <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#virtualKeyboard" prefHeight="25.0" prefWidth="46.0" text="!" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                              <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#virtualKeyboard" prefHeight="25.0" prefWidth="46.0" text="\%" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+                              <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#virtualKeyboard" prefHeight="25.0" prefWidth="46.0" text="√" GridPane.columnIndex="3" GridPane.rowIndex="2" />
+                           </children>
+                        </GridPane>
+                     </children>
+                  </AnchorPane>
+            </content>
+          </Tab>
+          <Tab text="Vědecká">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <TextField fx:id="input1" layoutX="15.0" layoutY="14.0" prefHeight="25.0" prefWidth="276.0" />
+                        <Label fx:id="output1" layoutX="15.0" layoutY="50.0" prefHeight="25.0" prefWidth="276.0" />
+                        <GridPane layoutX="15.0" layoutY="90.0" prefHeight="266.0" prefWidth="276.0">
+                           <columnConstraints>
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                           </columnConstraints>
+                           <rowConstraints>
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                           </rowConstraints>
+                           <children>
+                              <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#virtualKeyboard" prefHeight="25.0" prefWidth="46.0" text="7" GridPane.rowIndex="6" />
+                              <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#virtualKeyboard" prefHeight="25.0" prefWidth="46.0" text="8" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                              <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#virtualKeyboard" prefHeight="25.0" prefWidth="46.0" text="4" GridPane.rowIndex="7" />
+                              <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#virtualKeyboard" prefHeight="103.0" prefWidth="92.0" text="5" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+                              <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#virtualKeyboard" prefHeight="90.0" prefWidth="51.0" text="9" GridPane.columnIndex="2" GridPane.rowIndex="6" />
+                              <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#virtualKeyboard" prefHeight="25.0" prefWidth="46.0" text="6" GridPane.columnIndex="2" GridPane.rowIndex="7" />
+                              <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#virtualKeyboard" prefHeight="25.0" prefWidth="46.0" text="1" GridPane.rowIndex="8" />
+                              <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#virtualKeyboard" prefHeight="25.0" prefWidth="46.0" text="2" GridPane.columnIndex="1" GridPane.rowIndex="8" />
+                              <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#virtualKeyboard" prefHeight="25.0" prefWidth="46.0" text="3" GridPane.columnIndex="2" GridPane.rowIndex="8" />
+                              <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#virtualKeyboard" prefHeight="25.0" prefWidth="46.0" text="." GridPane.columnIndex="2" GridPane.rowIndex="9" />
+                              <Button fx:id="submit1" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#submitPressed" prefHeight="25.0" prefWidth="46.0" text="enter" GridPane.columnIndex="3" GridPane.rowIndex="6" GridPane.rowSpan="2147483647" />
+                              <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#virtualKeyboard" prefHeight="25.0" prefWidth="46.0" text="0" GridPane.columnSpan="2" GridPane.rowIndex="9" />
+                              <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#virtualKeyboard" prefHeight="25.0" prefWidth="46.0" text="*" GridPane.rowIndex="5" />
+                              <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#virtualKeyboard" prefHeight="25.0" prefWidth="46.0" text="/" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                              <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#virtualKeyboard" prefHeight="25.0" prefWidth="46.0" text=")" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                              <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#virtualKeyboard" prefHeight="25.0" prefWidth="46.0" text="-" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                              <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#virtualKeyboard" prefHeight="25.0" prefWidth="46.0" text="+" GridPane.rowIndex="4" />
+                              <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#backspacePressed" prefHeight="25.0" prefWidth="46.0" text="backspace" wrapText="true" GridPane.columnIndex="3" GridPane.columnSpan="2147483647" GridPane.rowIndex="3" />
+                              <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#virtualKeyboard" prefHeight="25.0" prefWidth="46.0" text="(" GridPane.rowIndex="3" />
+                              <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#virtualKeyboard" prefHeight="25.0" prefWidth="46.0" text="^" GridPane.columnIndex="2" GridPane.rowIndex="5" />
+                              <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#clear" prefHeight="25.0" prefWidth="46.0" text="clear" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+                              <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#virtualKeyboard" prefHeight="25.0" prefWidth="46.0" text="!" GridPane.columnIndex="2" GridPane.rowIndex="4" />
+                              <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#virtualKeyboard" prefHeight="25.0" prefWidth="46.0" text="\%" GridPane.columnIndex="3" GridPane.rowIndex="4" />
+                              <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#virtualKeyboard" prefHeight="25.0" prefWidth="46.0" text="√" GridPane.columnIndex="3" GridPane.rowIndex="5" />
+                              <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#virtualKeyboard" prefHeight="25.0" prefWidth="46.0" text="sin" GridPane.rowIndex="1" />
+                              <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#virtualKeyboard" prefHeight="25.0" prefWidth="46.0" text="cos" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                              <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#virtualKeyboard" prefHeight="25.0" prefWidth="46.0" text="arcsin" GridPane.rowIndex="2" />
+                              <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#virtualKeyboard" prefHeight="25.0" prefWidth="46.0" text="arccos" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                              <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#virtualKeyboard" prefHeight="25.0" prefWidth="46.0" text="tan" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                              <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#virtualKeyboard" prefHeight="25.0" prefWidth="46.0" text="arctan" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+                              <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#virtualKeyboard" prefHeight="25.0" prefWidth="46.0" text="cotan" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+                              <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#virtualKeyboard" prefHeight="25.0" prefWidth="46.0" text="arcctg" GridPane.columnIndex="3" GridPane.rowIndex="2" />
+                              <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#virtualKeyboard" prefHeight="25.0" prefWidth="46.0" text="ln" />
+                              <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#virtualKeyboard" prefHeight="25.0" prefWidth="46.0" text="log" GridPane.columnIndex="1" />
+                              <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#virtualKeyboard" prefHeight="25.0" prefWidth="46.0" text="rand" GridPane.columnIndex="2" />
+                              <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#virtualKeyboard" prefHeight="25.0" prefWidth="46.0" text="exp" GridPane.columnIndex="3" />
+                           </children>
+                        </GridPane>
+                     </children>
+                  </AnchorPane>
+            </content>
+          </Tab>
+            <Tab text="Graf">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <Canvas focusTraversable="true" height="250.0" layoutX="28.0" layoutY="27.0" width="251.0">
+                           <effect>
+                              <ImageInput>
+                                 <source>
+                                    <Image url="file:/C:/Users/tsiti/Desktop/2023-04-13%2014_04_13-Window.png" />
+                                 </source>
+                              </ImageInput>
+                           </effect>
+                        </Canvas>
+                        <TextField layoutX="28.0" layoutY="302.0" prefHeight="25.0" prefWidth="251.0" text="g(x) = x^45 + a" />
+                        <TextField layoutX="28.0" layoutY="277.0" prefHeight="25.0" prefWidth="251.0" text="f(x) = 123-456+x" />
+                        <TextField layoutX="28.0" layoutY="327.0" prefHeight="25.0" prefWidth="251.0" text="a = 25" />
+                     </children>
+                  </AnchorPane>
+              </content>
+            </Tab>
+            <Tab text="BMI">
+               <content>
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                     <children>
+                        <TextField layoutX="15.0" layoutY="14.0" prefHeight="25.0" prefWidth="276.0" promptText="hmotnost" />
+                        <TextField layoutX="15.0" layoutY="47.0" prefHeight="25.0" prefWidth="276.0" promptText="výška" />
+                        <TextField layoutX="15.0" layoutY="81.0" prefHeight="25.0" prefWidth="276.0" promptText="rok" />
+                        <TextArea layoutX="15.0" layoutY="117.0" prefHeight="236.0" prefWidth="276.0" promptText="doporučení" />
+                     </children>
+                  </AnchorPane>
+               </content></Tab>
+            <Tab text="Konzole">
+               <content>
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                     <children>
+                        <TextArea layoutX="18.0" layoutY="18.0" prefHeight="335.0" prefWidth="271.0" text="\$ sudo rm -rf /" wrapText="true" />
+                     </children>
+                  </AnchorPane>
+               </content>
+            </Tab>
+        </tabs>
+      </TabPane>
+   </children>
+</AnchorPane>
