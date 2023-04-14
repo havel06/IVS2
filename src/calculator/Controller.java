@@ -134,11 +134,22 @@ public class Controller implements Initializable {
     @FXML
     private void showHelp(ActionEvent event) {
         help_view.setText("""
-                    enter - enter
-                    backspace - backspace
-                    clear - clear
-                    idk
-                    čísla smh bruh
+0-9 - přidat číslici
+. - desetinná tečka
+() - závorky
+
++ - sčítání
+- - odčítání
+* - násobení
+/ - dělení
+^ - mocnina
+√ - odmocnina
+% - modulo
+! - faktoriál
+
+enter - vyhodnotit výraz
+backspace - odstranit znak před kurzorem
+clear - vymazat celé textové pole
                 """);
 
         help_view.setDisable(false);
