@@ -2,5 +2,5 @@ Package: calql8r
 Version: 1.0
 Architecture: all
 Description: A calculator.
-Depends: default-jre, libopenjfx-java
+Depends: openjdk-17-jre, libopenjfx-java
 Maintainer: Michal Havlíček, Tomáš Sitarčík, Jan Šemora
