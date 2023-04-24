@@ -98,6 +98,7 @@ pack: calculator profile doc
 	make clean
 	cp -rf ../ /tmp/calql8r/repo
 	#archive
-	cd /tmp/calql8r && zip -r archive.zip *
-	mv /tmp/calql8r/archive.zip xhavli65_xsemor01_xsitar06.zip
-	rm -rf /tmp/calql8r
+	mv /tmp/calql8r /tmp/xhavli65_xsemor01_xsitar06
+	cd /tmp && zip -r ivs_archive.zip xhavli65_xsemor01_xsitar06
+	mv /tmp/ivs_archive.zip xhavli65_xsemor01_xsitar06.zip
+	rm -rf /tmp/xhavli65_xsemor01_xsitar06
