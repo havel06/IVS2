@@ -1,0 +1,3 @@
+xhavli65 100 (parser, profiling)
+xsitar06 100 (GUI, mockupy)
+xsemor01 100 (knihovna, testy, profiling)
