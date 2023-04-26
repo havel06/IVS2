@@ -2,5 +2,5 @@ Package: stddev
 Version: 1.0
 Architecture: all
 Description: Standard deviation.
-Depends: openjdk-17-jre
+Depends: openjdk-17-jre, libopenjfx-jni
 Maintainer: Michal Havlíček, Tomáš Sitarčík, Jan Šemora
